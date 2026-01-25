@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aadhaar SafeGuard</title>
+
+    <!-- INTERNAL CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 60%;
+            margin: 50px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .tagline {
+            text-align: center;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #1a73e8;
+            margin-top: 30px;
+        }
+
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        button {
+            background-color: #1a73e8;
+            color: white;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: #0c56c9;
+        }
+
+        .status {
+            margin-top: 15px;
+            font-weight: bold;
+            color: green;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #777;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Aadhaar SafeGuard</h1>
+        <p class="tagline">Protecting Aadhaar Data Through Awareness & Prevention</p>
+
+        <h2>Why Aadhaar Safety Matters</h2>
+        <p>
+            Aadhaar is one of the most important identity documents in India.
+            Due to lack of awareness, many citizens fall victim to data misuse,
+            identity theft, and financial fraud.
+        </p>
+
+        <h2>Common Aadhaar Scams</h2>
+        <ul>
+            <li>Fake calls asking for OTP</li>
+            <li>Phishing messages and fake links</li>
+            <li>Unauthorized Aadhaar usage</li>
+        </ul>
+
+        <h2>Safety Tips</h2>
+        <ul>
+            <li>Never share OTP with anyone</li>
+            <li>Share Aadhaar only with trusted sources</li>
+            <li>Use masked Aadhaar whenever possible</li>
+        </ul>
+
+        <button onclick="reportMisuse()">Report Aadhaar Misuse (Demo)</button>
+
+        <p class="status">Status: Secure Awareness Mode Enabled</p>
+
+        <p class="footer">
+            This project is created for educational and awareness purposes only.
+        </p>
+    </div>
+
+    <!-- INTERNAL JAVASCRIPT -->
+    <script>
+        function reportMisuse() {
+            alert(
+                "Report Submitted Successfully!\n\n" +
+                "This is a demo feature.\n" +
+                "In a real system, the report would be sent to authorities."
+            );
+        }
+    </script>
+
+</body>
+</html>
