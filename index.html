@@ -1,319 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Aadhaar SafeGuard</title>
+  <meta charset="UTF-8">
+  <title>Aadhaar SafeGuard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
-body {
-    margin: 0;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f4f6f8;
-    overflow-x: hidden;
-}
-
-/* ========== HERO / HOME ========== */
-.hero {
-    height: 100vh;
-    background: linear-gradient(135deg, #0d47a1, #1976d2);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero h1 {
-    font-size: 48px;
-    animation: slideDown 1s ease;
-}
-
-.hero p {
-    opacity: 0.9;
-    animation: fadeIn 1.5s ease;
-}
-
-.hero button {
-    margin-top: 25px;
-    padding: 14px 30px;
-    border-radius: 30px;
-    border: none;
-    background: white;
-    color: #0d47a1;
-    font-size: 16px;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.hero button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-}
-
-/* Floating emojis */
-.emoji {
-    position: absolute;
-    font-size: 26px;
-    animation: float 9s infinite linear;
-    opacity: 0.8;
-}
-
-@keyframes float {
-    from { transform: translateY(100vh); }
-    to { transform: translateY(-120vh); }
-}
-
-@keyframes slideDown {
-    from { transform: translateY(-40px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* ========== MAIN CONTENT ========== */
-.main {
-    width: 70%;
-    margin: 80px auto;
-}
-
-/* Section */
-.section {
-    background: white;
-    padding: 35px;
-    margin-bottom: 40px;
-    border-radius: 16px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-    animation: fadeUp 0.8s ease;
-}
-
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(25px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.section h2 {
-    color: #0d47a1;
-}
-
-/* Cards */
-.cards {
-    display: flex;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.card {
-    flex: 1;
-    background: #f1f5fb;
-    padding: 20px;
-    border-radius: 14px;
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card span {
-    font-size: 32px;
-    display: inline-block;
-    transition: transform 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-}
-
-.card:hover span {
-    transform: rotate(10deg) scale(1.2);
-}
-
-/* Counters */
-.counters {
-    display: flex;
-    gap: 20px;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.counter {
-    flex: 1;
-    background: #e3f2fd;
-    padding: 25px;
-    border-radius: 14px;
-}
-
-.counter h1 {
-    font-size: 40px;
-    color: #0d47a1;
-}
-
-/* Buttons */
-.action-btn {
-    background: linear-gradient(135deg, #1565c0, #1e88e5);
-    color: white;
-    padding: 14px 24px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-/* Modal */
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-box {
-    background: white;
-    padding: 30px;
-    width: 420px;
-    border-radius: 16px;
-}
-
-/* Form */
-input, textarea, select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 8px;
-    margin-bottom: 15px;
-}
-
-/* Responsive */
-@media(max-width: 900px) {
-    .main { width: 90%; }
-    .cards, .counters { flex-direction: column; }
-}
-</style>
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- HOME -->
+<!-- HERO -->
 <section class="hero">
-    <div>
-        <h1>🔐 Aadhaar SafeGuard</h1>
-        <p>Protecting Aadhaar Data • Preventing Fraud • Spreading Awareness</p>
-        <button onclick="scrollToMain()">Explore Platform</button>
-    </div>
-
-    <div class="emoji" style="left:10%">🔐</div>
-    <div class="emoji" style="left:30%">🛡️</div>
-    <div class="emoji" style="left:50%">⚠️</div>
-    <div class="emoji" style="left:70%">📄</div>
+  <div class="hero-content">
+    <h1>🔐 Aadhaar SafeGuard</h1>
+    <p>Protecting Aadhaar Data Through Awareness & Action</p>
+    <button class="enter-btn" onclick="enterPlatform()">Enter Platform</button>
+  </div>
 </section>
 
-<!-- MAIN -->
-<div class="main" id="main">
+<!-- MAIN CONTENT -->
+<section class="main" id="main">
 
-<!-- INTRO -->
-<div class="section">
-    <h2>What is Aadhaar SafeGuard?</h2>
-    <p>
-        Aadhaar SafeGuard is an awareness and prevention platform designed
-        to help citizens protect their Aadhaar data and understand fraud risks.
-    </p>
+  <div class="section">
+    <h2>Platform Capabilities</h2>
 
     <div class="cards">
-        <div class="card"><span>👁️</span><h3>Awareness</h3><p>Educates users on safe practices</p></div>
-        <div class="card"><span>🔔</span><h3>Alerts</h3><p>Conceptual fraud warning system</p></div>
-        <div class="card"><span>📝</span><h3>Reporting</h3><p>Easy misuse reporting (demo)</p></div>
-    </div>
-</div>
+      <div class="card">
+        <span>👁️</span>
+        <h3>Awareness</h3>
+        <p>Educates citizens on Aadhaar safety, scams and best practices.</p>
+      </div>
 
-<!-- COUNTERS -->
-<div class="section">
-    <h2>Platform Impact (Demo)</h2>
+      <div class="card">
+        <span>🔔</span>
+        <h3>Detection</h3>
+        <p>Helps identify OTP frauds, phishing links and fake calls.</p>
+      </div>
+
+      <div class="card">
+        <span>📝</span>
+        <h3>Reporting</h3>
+        <p>Allows users to report Aadhaar misuse securely and easily.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Live Impact</h2>
+
     <div class="counters">
-        <div class="counter"><h1 id="c1">0</h1><p>Citizens Aware</p></div>
-        <div class="counter"><h1 id="c2">0</h1><p>Frauds Prevented</p></div>
-        <div class="counter"><h1 id="c3">0</h1><p>Reports Submitted</p></div>
+      <div class="counter">
+        <h1 id="c1">0</h1>
+        <p>Citizens Aware</p>
+      </div>
+      <div class="counter">
+        <h1 id="c2">0</h1>
+        <p>Frauds Prevented</p>
+      </div>
+      <div class="counter">
+        <h1 id="c3">230</h1>
+        <p>Reports Submitted</p>
+      </div>
     </div>
-</div>
+  </div>
 
-<!-- ACTION -->
-<div class="section">
+  <div class="section">
     <h2>Take Action</h2>
-    <p>Report Aadhaar misuse to raise awareness and improve safety By Aswin D.</p>
-    <button class="action-btn" onclick="openForm()">Report Aadhaar Misuse (Demo)</button>
-</div>
+    <button class="action-btn" onclick="openModal()">Report Aadhaar Misuse</button>
+  </div>
 
-</div>
+</section>
 
-<!-- REPORT FORM -->
-<div class="modal" id="formPopup">
-    <div class="modal-box">
-        <h2>Report Aadhaar Misuse</h2>
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <h2>📝 Report Aadhaar Misuse</h2>
 
-        <input type="text" placeholder="Your Name">
-        <select>
-            <option>OTP Scam</option>
-            <option>Fake Call</option>
-            <option>Phishing Link</option>
-        </select>
-        <textarea rows="3" placeholder="Describe the issue"></textarea>
+    <input id="name" placeholder="👤 Full Name">
+    <input id="email" placeholder="📧 Email">
+    <input id="phone" placeholder="📱 Phone Number">
 
-        <button class="action-btn" onclick="submitForm()">Submit</button>
-        <button class="action-btn" style="background:#e53935;margin-top:10px;" onclick="closeForm()">Close</button>
+    <select id="scam">
+      <option value="">Select Scam Type</option>
+      <option value="OTP Scam">OTP Scam</option>
+      <option value="Fake Call">Fake Call</option>
+      <option value="Phishing Link">Phishing Link</option>
+      <option value="Identity Misuse">Identity Misuse</option>
+    </select>
+
+    <textarea id="msg" rows="3" placeholder="📝 Describe the issue"></textarea>
+
+    <button class="submit-btn" onclick="submitReport()">Submit Report</button>
+
+    <div class="success" id="successMsg">
+      ✅ Report submitted successfully.<br>
+      Sit back & relax — we’ll reach out while resolving your issue.
     </div>
+
+    <button class="close-btn" onclick="closeModal()">Close</button>
+  </div>
 </div>
 
-<script>
-function scrollToMain() {
-    document.getElementById("main").scrollIntoView({ behavior: "smooth" });
-}
+<!-- JS -->
+<footer class="footer">
+  🚀 Project by <span>Aswin D</span>
 
-/* ===== SCROLL-TRIGGERED COUNTERS ===== */
-let counterStarted = false;
+  <a href="https://www.instagram.com/aswin.irl.06/" 
+     target="_blank" 
+     class="insta-link"
+     aria-label="Instagram">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+         alt="Instagram"
+         class="insta-icon">
+  </a>
 
-function animateCounter(id, target) {
-    let count = 0;
-    const speed = target / 80;
+  🔐
+</footer>
 
-    const interval = setInterval(() => {
-        count += speed;
-        if (count >= target) {
-            count = target;
-            clearInterval(interval);
-        }
-        document.getElementById(id).innerText = Math.floor(count);
-    }, 20);
-}
-
-const counterSection = document.querySelector(".counters");
-
-const observer = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting && !counterStarted) {
-        counterStarted = true;
-
-        animateCounter("c1", 1500);
-        animateCounter("c2", 420);
-        animateCounter("c3", 230);
-    }
-}, { threshold: 0.4 });
-
-observer.observe(counterSection);
-
-/* ===== FORM ===== */
-function openForm() {
-    document.getElementById("formPopup").style.display = "flex";
-}
-function closeForm() {
-    document.getElementById("formPopup").style.display = "none";
-}
-function submitForm() {
-    alert("Report submitted successfully (Demo)");
-    closeForm();
-}
-</script>
-
+<script src="script.js"></script>
+</body>
+</html>
