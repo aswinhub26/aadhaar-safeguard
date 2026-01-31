@@ -242,3 +242,68 @@ select option{
 .insta-link:hover .insta-icon{
   transform:scale(1.2);
 }
+/* =========================
+   MOBILE RESPONSIVE FIX
+   ========================= */
+@media (max-width: 768px){
+
+  /* HERO */
+  .hero{
+    padding: 0 16px;
+  }
+
+  .hero-content h1{
+    font-size: 36px;   /* was 64px */
+    line-height: 1.2;
+  }
+
+  .hero-content p{
+    font-size: 15px;
+  }
+
+  .enter-btn{
+    padding: 14px 32px;
+    font-size: 15px;
+  }
+
+  /* MAIN CONTAINER */
+  .main{
+    width: 92%;
+    margin: 60px auto;
+  }
+
+  /* SECTIONS */
+  .section{
+    margin-bottom: 60px;
+  }
+
+  /* CARDS STACK */
+  .cards{
+    flex-direction: column;
+  }
+
+  .card{
+    margin-bottom: 16px;
+  }
+
+  /* COUNTERS STACK */
+  .counters{
+    flex-direction: column;
+  }
+
+  .counter{
+    margin-bottom: 16px;
+  }
+
+  /* MODAL */
+  .modal-box{
+    width: 92%;
+    padding: 22px;
+  }
+
+  /* FOOTER */
+  .footer{
+    font-size: 13px;
+    padding: 14px 8px;
+  }
+}
