@@ -1,0 +1,244 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family: "Segoe UI", Arial, sans-serif;
+  background:#050816;
+  color:#fff;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:linear-gradient(180deg,#0a1a4f,#050816);
+}
+
+.hero-content h1{
+  font-size:64px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-shadow:0 6px 25px rgba(0,0,0,.5);
+}
+
+.hero-content p{
+  margin-top:14px;
+  font-size:18px;
+  opacity:0.9;
+}
+
+/* ENTER BUTTON */
+.enter-btn{
+  margin-top:36px;
+  padding:16px 46px;
+  font-size:17px;
+  border-radius:50px;
+  border:none;
+  cursor:pointer;
+  background:linear-gradient(135deg,#00e5ff,#2979ff);
+  color:#000;
+  transition:all .3s ease;
+}
+
+.enter-btn:hover{
+  transform:scale(1.12);
+  box-shadow:0 0 40px rgba(0,229,255,.9);
+}
+
+/* MAIN */
+.main{
+  width:75%;
+  margin:100px auto;
+}
+
+.section{
+  margin-bottom:90px;
+  opacity:0;
+  transform:translateY(60px);
+  transition:1s;
+}
+
+.section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.section h2{
+  color:#00e5ff;
+  margin-bottom:25px;
+}
+
+/* CARDS */
+.cards{
+  display:flex;
+  gap:25px;
+}
+
+.card{
+  flex:1;
+  padding:25px;
+  border-radius:18px;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(12px);
+  text-align:center;
+  transition:.4s;
+}
+
+.card:hover{
+  transform:translateY(-15px);
+  box-shadow:0 20px 60px rgba(0,229,255,.35);
+}
+
+.card span{
+  font-size:36px;
+}
+
+.card p{
+  margin-top:10px;
+  opacity:.85;
+  font-size:14px;
+}
+
+/* COUNTERS */
+.counters{
+  display:flex;
+  gap:25px;
+}
+
+.counter{
+  flex:1;
+  padding:30px;
+  border-radius:18px;
+  background:linear-gradient(135deg,#0d47a1,#00e5ff);
+  color:#000;
+  text-align:center;
+}
+
+.counter h1{
+  font-size:46px;
+}
+
+/* ACTION BUTTON */
+.action-btn{
+  padding:14px 34px;
+  border-radius:40px;
+  border:none;
+  cursor:pointer;
+  background:linear-gradient(135deg,#00e5ff,#2979ff);
+  color:#000;
+  font-size:15px;
+}
+
+/* MODAL */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+.modal-box{
+  width:420px;
+  padding:30px;
+  border-radius:20px;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(16px);
+  text-align:center;
+}
+
+.modal-box input,
+.modal-box textarea,
+.modal-box select{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border-radius:10px;
+  border:none;
+  background:rgba(255,255,255,.15);
+  color:#fff;
+}
+
+select option{
+  background:#0b1020;
+  color:#fff;
+}
+
+.submit-btn{
+  width:100%;
+  margin-top:18px;
+  padding:14px;
+  border-radius:30px;
+  border:none;
+  cursor:pointer;
+  background:linear-gradient(135deg,#00e5ff,#2979ff);
+}
+
+.success{
+  display:none;
+  margin-top:15px;
+  padding:12px;
+  border-radius:12px;
+  background:rgba(0,255,150,.15);
+  color:#b9ffdf;
+}
+
+.close-btn{
+  margin-top:12px;
+  background:none;
+  border:none;
+  color:#aaa;
+  cursor:pointer;
+}
+
+@media(max-width:900px){
+  .main{width:90%}
+  .cards,.counters{flex-direction:column}
+}
+/* FOOTER BANNER */
+.footer{
+  text-align:center;
+  padding:18px 0;
+  font-size:14px;
+  color:#cfd8ff;
+  background:linear-gradient(90deg,#050816,#0a1a4f,#050816);
+  letter-spacing:.5px;
+}
+
+/* Name highlight */
+.footer span{
+  color:#00e5ff;
+  font-weight:600;
+}
+
+/* Instagram link */
+.insta-link{
+  display:inline-block;
+  margin:0 6px;
+  vertical-align:middle;
+}
+
+/* Instagram icon */
+.insta-icon{
+  width:18px;
+  height:18px;
+  vertical-align:middle;
+  transition:transform .3s ease;
+}
+
+/* Hover effect */
+.insta-link:hover .insta-icon{
+  transform:scale(1.2);
+}
