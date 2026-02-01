@@ -402,3 +402,77 @@ select option{
   pointer-events: auto;  /* 🔥 ENSURE CLICKABLE */
 }
 
+.trust-banner{
+  margin-top:20px;
+  padding:10px 18px;
+  background:rgba(0,229,255,.12);
+  border:1px solid rgba(0,229,255,.3);
+  border-radius:10px;
+  font-size:13px;
+  color:#cfffff;
+}
+
+/* =========================
+   FLOATING INFO BOX
+   ========================= */
+.info-box{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:16px 18px;
+  width:260px;
+  background:linear-gradient(135deg,#0a1a4f,#050816);
+  border:1px solid rgba(0,229,255,.4);
+  border-radius:18px;
+  box-shadow:0 0 35px rgba(0,229,255,.25);
+  z-index:999;
+  animation:floatBox 4s ease-in-out infinite;
+}
+
+/* Icon */
+.info-icon{
+  font-size:30px;
+}
+
+/* Text */
+.info-text strong{
+  display:block;
+  color:#00e5ff;
+  font-size:15px;
+  letter-spacing:.4px;
+}
+
+.info-text span{
+  font-size:13px;
+  color:#cfd8ff;
+  opacity:.9;
+}
+
+/* Floating animation */
+@keyframes floatBox{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+  100%{transform:translateY(0)}
+}
+
+/* Mobile friendly */
+@media(max-width:768px){
+  .info-box{
+    width:220px;
+    bottom:16px;
+    right:16px;
+    padding:14px;
+  }
+}
+
+/* Hide info box when modal is active */
+.modal-active .info-box {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: .3s ease;
+}
+
