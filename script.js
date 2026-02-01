@@ -1,9 +1,10 @@
 /* ===============================
-   COUNTER HELPERS
+   COUNTER VALUES (STORAGE)
 ================================ */
 function getCount(key, defaultVal) {
-  const v = localStorage.getItem(key);
-  return v ? parseInt(v, 10) : defaultVal;
+  return localStorage.getItem(key)
+    ? parseInt(localStorage.getItem(key))
+    : defaultVal;
 }
 
 let aware = getCount("aware", 1500);
@@ -11,60 +12,61 @@ let prevented = getCount("prevented", 420);
 let reports = getCount("reports", 256);
 
 /* ===============================
-   ANIMATED COUNTERS
+   COUNT-UP ANIMATION
 ================================ */
 function animateCount(id, target) {
-  const el = document.getElementById(id);
-  if (!el) return;
+  let el = document.getElementById(id);
+  let count = 0;
+  let step = Math.ceil(target / 80);
 
-  let cur = 0;
-  const step = Math.max(1, Math.ceil(target / 60));
-
-  const t = setInterval(() => {
-    cur += step;
-    if (cur >= target) {
-      cur = target;
-      clearInterval(t);
+  let interval = setInterval(() => {
+    count += step;
+    if (count >= target) {
+      el.innerText = target;
+      clearInterval(interval);
+    } else {
+      el.innerText = count;
     }
-    el.innerText = cur;
   }, 20);
 }
 
-function updateCounters() {
-  animateCount("c1", aware);
-  animateCount("c2", prevented);
-  animateCount("c3", reports);
-}
+/* ===============================
+   OBSERVER (RUN ON SCROLL)
+================================ */
+let counted = false;
 
-document.addEventListener("DOMContentLoaded", updateCounters);
+const observer = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting && !counted) {
+    counted = true;
+    animateCount("c1", aware);
+    animateCount("c2", prevented);
+    animateCount("c3", reports);
+  }
+}, { threshold: 0.4 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  observer.observe(document.querySelector(".counters"));
+});
 
 /* ===============================
    ENTER PLATFORM
 ================================ */
 function enterPlatform() {
-  const m = document.getElementById("main");
-  if (m) m.scrollIntoView({ behavior: "smooth" });
+  document.getElementById("main").scrollIntoView({ behavior: "smooth" });
 }
 
 /* ===============================
-   MODAL
+   MODAL CONTROL
 ================================ */
 function openModal() {
-  const m = document.getElementById("modal");
-  if (m) m.style.display = "flex";
+  playBeep();
+  document.getElementById("modal").style.display = "flex";
+  document.body.classList.add("modal-active");
 }
 
 function closeModal() {
-  const m = document.getElementById("modal");
-  if (m) m.style.display = "none";
-}
-
-/* ===============================
-   SUCCESS POPUP
-================================ */
-function closeSuccess() {
-  const s = document.getElementById("successPopup");
-  if (s) s.style.display = "none";
+  document.getElementById("modal").style.display = "none";
+  document.body.classList.remove("modal-active");
 }
 
 /* ===============================
@@ -78,13 +80,14 @@ function submitReport() {
   const message = document.getElementById("message").value.trim();
 
   if (!name || !email || !phone || !scam || !message) {
-    alert("Please fill all required fields");
+    showToast("⚠️ Please fill all required fields");
     return;
   }
 
+  playBeep();
+
   const ticketId = "ASG-" + Math.floor(100000 + Math.random() * 900000);
 
-  /* Update local counters */
   reports++;
   aware += 3;
   prevented += 1;
@@ -93,30 +96,50 @@ function submitReport() {
   localStorage.setItem("aware", aware);
   localStorage.setItem("prevented", prevented);
 
-  updateCounters();
+  document.getElementById("ticketValue").innerText = ticketId;
+  document.getElementById("successPopup").style.display = "flex";
 
-  /* Send to Google Sheets (GitHub Pages only) */
-  fetch("https://script.google.com/macros/s/AKfycbwPfknGo1L8ibJTw_TFuBWHgZfTwiyFJNHKGrgxh2EW_F5uWnsgu9uipUq_lmQRYprVhw/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbzpZs-3l2RsK3_qKtvW3vh-zmHqS9qYVXxpjOhkQBWFjkvkL5wZDEGNzpPp-lu8i9NDfQ/exec", {
     method: "POST",
     mode: "no-cors",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name, email, phone, scam, message, ticketId })
   });
 
-  /* Show success popup */
-  document.getElementById("ticketValue").innerText = ticketId;
-  const popup = document.getElementById("successPopup");
-  popup.style.display = "flex";
+  setTimeout(closeSuccess, 7000);
 
-  /* AUTO CLOSE AFTER 7 SECONDS 🔥 */
-  setTimeout(() => {
-    popup.style.display = "none";
-  }, 7000);
-
-  /* Clear form */
   document.getElementById("name").value = "";
   document.getElementById("email").value = "";
   document.getElementById("phone").value = "";
   document.getElementById("scam").value = "";
   document.getElementById("message").value = "";
+}
+
+/* ===============================
+   CLOSE SUCCESS
+================================ */
+function closeSuccess() {
+  document.getElementById("successPopup").style.display = "none";
+  document.getElementById("modal").style.display = "none";
+  document.body.classList.remove("modal-active");
+}
+
+/* ===============================
+   TOAST
+================================ */
+function showToast(text) {
+  const toast = document.getElementById("toast");
+  toast.innerText = text;
+  toast.classList.add("show");
+  setTimeout(() => toast.classList.remove("show"), 3000);
+}
+
+/* ===============================
+   SOUND
+================================ */
+function playBeep() {
+  const beep = new Audio(
+    "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQQAAAAA"
+  );
+  beep.play().catch(() => {});
 }
