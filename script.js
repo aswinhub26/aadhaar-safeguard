@@ -99,12 +99,20 @@ function submitReport() {
   document.getElementById("ticketValue").innerText = ticketId;
   document.getElementById("successPopup").style.display = "flex";
 
-  fetch("https://script.google.com/macros/s/AKfycbzpZs-3l2RsK3_qKtvW3vh-zmHqS9qYVXxpjOhkQBWFjkvkL5wZDEGNzpPp-lu8i9NDfQ/exec", {
-    method: "POST",
-    mode: "no-cors",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, email, phone, scam, message, ticketId })
-  });
+  fetch("https://script.google.com/macros/s/AKfycbysIstrS6ebX9T6AUbK-cRmS1mZxpMCrRJVpqvxzc49us-dQHKBMsYt46g4Aq9z3TtrdQ/exec", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    name,
+    email,
+    phone,
+    scam,
+    message,
+    ticketId
+  })
+});
 
   setTimeout(closeSuccess, 7000);
 
