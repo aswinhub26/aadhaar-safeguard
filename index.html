@@ -4,16 +4,19 @@
   <meta charset="UTF-8">
   <title>Aadhaar SafeGuard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  
 <!-- HERO -->
 <section class="hero">
+  <!-- Floating emojis -->
+  <span class="float e1">🔐</span>
+  <span class="float e2">⚠️</span>
+  <span class="float e3">🛡️</span>
+  <span class="float e4">📄</span>
+
   <div class="hero-content">
     <h1>🔐 Aadhaar SafeGuard</h1>
     <p>Protecting Aadhaar Data Through Awareness & Action</p>
@@ -21,36 +24,38 @@
   </div>
 </section>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 <section class="main" id="main">
 
+  <!-- CAPABILITIES -->
   <div class="section">
     <h2>Platform Capabilities</h2>
-
     <div class="cards">
+
       <div class="card">
         <span>👁️</span>
         <h3>Awareness</h3>
-        <p>Educates citizens on Aadhaar safety, scams and best practices.</p>
+        <p>Educating citizens about Aadhaar scams, OTP frauds and safe practices.</p>
       </div>
 
       <div class="card">
         <span>🔔</span>
         <h3>Detection</h3>
-        <p>Helps identify OTP frauds, phishing links and fake calls.</p>
+        <p>Identifying suspicious calls, fake links and identity misuse patterns.</p>
       </div>
 
       <div class="card">
         <span>📝</span>
         <h3>Reporting</h3>
-        <p>Allows users to report Aadhaar misuse securely and easily.</p>
+        <p>Simple and secure reporting with ticket ID confirmation.</p>
       </div>
+
     </div>
   </div>
 
+  <!-- LIVE IMPACT -->
   <div class="section">
     <h2>Live Impact</h2>
-
     <div class="counters">
       <div class="counter">
         <h1 id="c1">0</h1>
@@ -61,15 +66,17 @@
         <p>Frauds Prevented</p>
       </div>
       <div class="counter">
-        <h1 id="c3">230</h1>
+        <h1 id="c3">0</h1>
         <p>Reports Submitted</p>
       </div>
     </div>
   </div>
 
-  <div class="section">
-    <h2>Take Action</h2>
-    <button class="action-btn" onclick="openModal()">Report Aadhaar Misuse</button>
+  <!-- ACTION -->
+  <div class="section center">
+    <button class="action-btn pulse" onclick="openModal()">
+      🚨 Report Aadhaar Misuse
+    </button>
   </div>
 
 </section>
@@ -77,50 +84,59 @@
 <!-- MODAL -->
 <div class="modal" id="modal">
   <div class="modal-box">
-    <h2>📝 Report Aadhaar Misuse</h2>
+    <h3>📝 Report Aadhaar Issue</h3>
 
+    <!-- INPUTS WITH EMOJIS -->
     <input id="name" placeholder="👤 Full Name">
-    <input id="email" placeholder="📧 Email">
+    <input id="email" placeholder="📧 Email Address">
     <input id="phone" placeholder="📱 Phone Number">
 
     <select id="scam">
-      <option value="">Select Scam Type</option>
-      <option value="OTP Scam">OTP Scam</option>
-      <option value="Fake Call">Fake Call</option>
-      <option value="Phishing Link">Phishing Link</option>
-      <option value="Identity Misuse">Identity Misuse</option>
+      <option value="">⚠️ Select Scam Type</option>
+      <option>OTP Scam</option>
+      <option>Fake Call</option>
+      <option>Phishing Link</option>
+      <option>Identity Misuse</option>
     </select>
 
-    <textarea id="msg" rows="3" placeholder="📝 Describe the issue"></textarea>
+    <textarea id="message" placeholder="📝 Describe the issue"></textarea>
 
-    <button class="submit-btn" onclick="submitReport()">Submit Report</button>
-
-    <div class="success" id="successMsg">
-      ✅ Report submitted successfully.<br>
-      Sit back & relax — we’ll reach out while resolving your issue.
-    </div>
-
+    <button class="submit-btn" onclick="submitReport()">Submit</button>
     <button class="close-btn" onclick="closeModal()">Close</button>
   </div>
 </div>
 
-<!-- JS -->
+<!-- SUCCESS -->
+<div class="success-popup" id="successPopup">
+  <div class="success-card">
+    <div class="tick">✅</div>
+    <h3>Report Submitted</h3>
+    <p>Sit back & relax 😌</p>
+    <div class="ticket">
+      🎟️ Ticket ID: <span id="ticketValue"></span>
+    </div>
+    <button class="close-btn" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- FOOTER -->
 <footer class="footer">
   🚀 Project by <span>Aswin D</span>
 
-  <a href="https://www.instagram.com/aswin.irl.06/" 
-     target="_blank" 
+  <!-- Instagram link -->
+  <a href="https://www.instagram.com/aswin.irl.06/"
+     target="_blank"
      class="insta-link"
-     aria-label="Instagram">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
-         alt="Instagram"
-         class="insta-icon">
+     title="Instagram">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+      class="insta-icon"
+      alt="Instagram">
   </a>
-
-  🔐
 </footer>
 
 <script src="script.js"></script>
 </body>
 </html>
-
