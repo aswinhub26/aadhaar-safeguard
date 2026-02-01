@@ -15,23 +15,29 @@ let reports = getCount("reports", 256);
    COUNT-UP ANIMATION
 ================================ */
 function animateCount(id, target) {
-  let el = document.getElementById(id);
-  let count = 0;
-  let step = Math.ceil(target / 80);
+  const el = document.getElementById(id);
+  let current = 0;
+  const step = Math.max(1, Math.ceil(target / 80));
 
-  let interval = setInterval(() => {
-    count += step;
-    if (count >= target) {
+  const interval = setInterval(() => {
+    current += step;
+    if (current >= target) {
       el.innerText = target;
       clearInterval(interval);
     } else {
-      el.innerText = count;
+      el.innerText = current;
     }
   }, 20);
 }
 
+function updateCountersInstant() {
+  document.getElementById("c1").innerText = aware;
+  document.getElementById("c2").innerText = prevented;
+  document.getElementById("c3").innerText = reports;
+}
+
 /* ===============================
-   OBSERVER (RUN ON SCROLL)
+   OBSERVER (RUN ON SCROLL ONCE)
 ================================ */
 let counted = false;
 
@@ -45,7 +51,8 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.4 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  observer.observe(document.querySelector(".counters"));
+  const counters = document.querySelector(".counters");
+  if (counters) observer.observe(counters);
 });
 
 /* ===============================
@@ -88,6 +95,7 @@ function submitReport() {
 
   const ticketId = "ASG-" + Math.floor(100000 + Math.random() * 900000);
 
+  // update values
   reports++;
   aware += 3;
   prevented += 1;
@@ -96,26 +104,31 @@ function submitReport() {
   localStorage.setItem("aware", aware);
   localStorage.setItem("prevented", prevented);
 
+  // update UI immediately
+  updateCountersInstant();
+
+  // success popup
   document.getElementById("ticketValue").innerText = ticketId;
   document.getElementById("successPopup").style.display = "flex";
 
+  // backend (Sheets)
   fetch("https://script.google.com/macros/s/AKfycbysIstrS6ebX9T6AUbK-cRmS1mZxpMCrRJVpqvxzc49us-dQHKBMsYt46g4Aq9z3TtrdQ/exec", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    name,
-    email,
-    phone,
-    scam,
-    message,
-    ticketId
-  })
-});
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name,
+      email,
+      phone,
+      scam,
+      message,
+      ticketId
+    })
+  });
 
+  // auto close success
   setTimeout(closeSuccess, 7000);
 
+  // reset form
   document.getElementById("name").value = "";
   document.getElementById("email").value = "";
   document.getElementById("phone").value = "";
