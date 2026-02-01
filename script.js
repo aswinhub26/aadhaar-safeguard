@@ -96,7 +96,7 @@ function submitReport() {
   updateCounters();
 
   /* Send to Google Sheets (GitHub Pages only) */
-  fetch("https://script.google.com/macros/s/AKfycbxMV-HCxeKZVQtLtwKPfJIvbk0vbiRn3eA3Yr79ehsrs79CeVSroMknQprxvmMLHy6FdA/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbwPfknGo1L8ibJTw_TFuBWHgZfTwiyFJNHKGrgxh2EW_F5uWnsgu9uipUq_lmQRYprVhw/exec", {
     method: "POST",
     mode: "no-cors",
     headers: { "Content-Type": "application/json" },
