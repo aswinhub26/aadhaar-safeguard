@@ -113,17 +113,17 @@ function submitReport() {
 
   // backend (Sheets)
   fetch("https://script.google.com/macros/s/AKfycbysIstrS6ebX9T6AUbK-cRmS1mZxpMCrRJVpqvxzc49us-dQHKBMsYt46g4Aq9z3TtrdQ/exec", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      name,
-      email,
-      phone,
-      scam,
-      message,
-      ticketId
-    })
-  });
+  method: "POST",
+  body: JSON.stringify({
+    name,
+    email,
+    phone,
+    scam,
+    message,
+    ticketId
+  })
+});
+
 
   // auto close success
   setTimeout(closeSuccess, 7000);
