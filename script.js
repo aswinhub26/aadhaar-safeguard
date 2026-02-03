@@ -164,3 +164,73 @@ function playBeep() {
   );
   beep.play().catch(() => {});
 }
+/* ===============================
+   LIVE SCAM CHECKER LOGIC
+================================ */
+function analyzeScam(){
+  const text = document.getElementById("scamInput").value.toLowerCase();
+  if(!text){
+    showToast("⚠️ Paste a message to analyze");
+    return;
+  }
+
+  document.getElementById("resultBox").style.display="none";
+  document.getElementById("scanner").style.display="block";
+
+  setTimeout(()=>{
+    let score = 0;
+    let reasons = [];
+
+    const rules = [
+      { key:["otp"], points:30, reason:"Mentions OTP"},
+      { key:["urgent","immediately","within"], points:20, reason:"Creates urgency"},
+      { key:["aadhaar","kyc"], points:25, reason:"Mentions Aadhaar/KYC"},
+      { key:["http","bit.ly","tinyurl"], points:25, reason:"Suspicious link detected"},
+    ];
+
+    rules.forEach(rule=>{
+      rule.key.forEach(word=>{
+        if(text.includes(word)){
+          score += rule.points;
+          reasons.push(rule.reason);
+        }
+      });
+    });
+
+    score = Math.min(score,100);
+
+    showResult(score,reasons);
+    document.getElementById("scanner").style.display="none";
+  },1800);
+}
+
+function showResult(score,reasons){
+  const title = document.getElementById("riskTitle");
+  const fill = document.getElementById("riskFill");
+  const desc = document.getElementById("riskDesc");
+  const list = document.getElementById("riskReasons");
+
+  list.innerHTML="";
+  reasons.forEach(r=>{
+    const li=document.createElement("li");
+    li.textContent=r;
+    list.appendChild(li);
+  });
+
+  if(score<=30){
+    title.textContent="🟢 Low Risk";
+    fill.style.background="#00e676";
+    desc.textContent="No major scam indicators found. Still stay alert.";
+  }else if(score<=60){
+    title.textContent="🟡 Suspicious";
+    fill.style.background="#ffeb3b";
+    desc.textContent="Some scam patterns detected. Do not share OTP.";
+  }else{
+    title.textContent="🔴 High Risk Scam";
+    fill.style.background="#ff5252";
+    desc.textContent="Strong scam indicators found. Avoid interaction.";
+  }
+
+  fill.style.width = score + "%";
+  document.getElementById("resultBox").style.display="block";
+}
