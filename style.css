@@ -532,3 +532,83 @@ select option{
   }
 }
 
+/* ===============================
+   LIVE SCAM CHECKER
+================================ */
+.checker-box{
+  padding:30px;
+  border-radius:20px;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(0,229,255,.25);
+}
+
+.checker-note{
+  font-size:14px;
+  opacity:.9;
+  margin-bottom:14px;
+}
+
+.checker-box textarea{
+  width:100%;
+  height:120px;
+  padding:14px;
+  border-radius:14px;
+  border:none;
+  background:rgba(0,0,0,.35);
+  color:#fff;
+  margin-bottom:16px;
+  resize:none;
+}
+
+/* Scanner animation */
+.scanner{
+  display:none;
+  margin-top:14px;
+  text-align:center;
+  font-size:13px;
+  opacity:.9;
+}
+
+.scan-line{
+  height:4px;
+  width:100%;
+  background:linear-gradient(90deg,transparent,#00e5ff,transparent);
+  animation:scan 1.4s infinite;
+  margin-bottom:8px;
+}
+
+@keyframes scan{
+  0%{transform:translateX(-100%)}
+  100%{transform:translateX(100%)}
+}
+
+/* Result */
+.result-box{
+  display:none;
+  margin-top:20px;
+  padding:18px;
+  border-radius:16px;
+  background:rgba(0,0,0,.35);
+}
+
+.risk-meter{
+  width:100%;
+  height:10px;
+  background:#222;
+  border-radius:10px;
+  overflow:hidden;
+  margin:10px 0;
+}
+
+.risk-fill{
+  height:100%;
+  width:0%;
+  transition:width 1s ease;
+}
+
+.result-box ul{
+  margin-top:10px;
+  padding-left:18px;
+  font-size:13px;
+}
