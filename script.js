@@ -234,3 +234,52 @@ function showResult(score,reasons){
   fill.style.width = score + "%";
   document.getElementById("resultBox").style.display="block";
 }
+/* ===============================
+   ADVANCED USER EMAIL (AWARENESS)
+================================ */
+function emailIssueAdvanced(){
+  const title = document.getElementById("riskTitle").innerText;
+  const desc = document.getElementById("riskDesc").innerText;
+
+  const reasons = Array.from(
+    document.querySelectorAll("#riskReasons li")
+  ).map(li => "- " + li.innerText).join("\n");
+
+  const timestamp = new Date().toLocaleString();
+  const userAgent = navigator.userAgent;
+
+  const body = `
+Hello Aadhaar SafeGuard Team,
+
+I am voluntarily reporting a suspicious message for awareness purposes.
+
+==============================
+SCAM ANALYSIS SUMMARY
+==============================
+Result      : ${title}
+Description : ${desc}
+
+Indicators:
+${reasons}
+
+==============================
+ADDITIONAL INFO
+==============================
+Reported On : ${timestamp}
+Device Info : ${userAgent}
+
+⚠️ Note:
+This email is sent manually by the user using their own email client.
+No Aadhaar SafeGuard system has stored or transmitted my data.
+
+(If required, I have attached the downloaded PDF report.)
+
+Regards,
+Concerned Citizen
+`;
+
+  const subject = "User-Reported Aadhaar Scam (Awareness Submission)";
+
+  const mailto = `mailto:aswinhub26@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = mailto;
+}
