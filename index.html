@@ -105,6 +105,45 @@
     </div>
   </div>
 
+  <!-- LIVE SCAM CHECKER -->
+<div class="section">
+  <h2>🤖 Live Scam Checker (Awareness AI)</h2>
+
+  <div class="checker-box">
+    <p class="checker-note">
+      Paste any SMS, WhatsApp message, email, or link.
+      Our awareness engine will analyze scam patterns.
+    </p>
+
+    <textarea id="scamInput" placeholder="📩 Paste suspicious message here..."></textarea>
+
+    <button class="action-btn" onclick="analyzeScam()">
+      🔍 Analyze Message
+    </button>
+
+    <!-- LOADING -->
+    <div class="scanner" id="scanner">
+      <div class="scan-line"></div>
+      <span>Analyzing patterns...</span>
+    </div>
+
+    <!-- RESULT -->
+    <div class="result-box" id="resultBox">
+      <h3 id="riskTitle"></h3>
+      <div class="risk-meter">
+        <div class="risk-fill" id="riskFill"></div>
+      </div>
+      <p id="riskDesc"></p>
+      <ul id="riskReasons"></ul>
+    </div>
+
+    <div class="trust-banner">
+      🤖 Awareness Mode • No data stored • Not official verification
+    </div>
+  </div>
+</div>
+
+
   <!-- ACTION -->
   <div class="section center">
     <button class="action-btn pulse" onclick="openModal()">
@@ -189,5 +228,6 @@
 <script src="script.js"></script>
 </body>
 </html>
+
 
 
