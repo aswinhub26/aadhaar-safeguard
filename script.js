@@ -269,17 +269,21 @@ Reported On : ${timestamp}
 Device Info : ${userAgent}
 
 ⚠️ Note:
-This email is sent manually by the user using their own email client.
+This email is sent manually by the user using Gmail Web.
 No Aadhaar SafeGuard system has stored or transmitted my data.
-
-(If required, I have attached the downloaded PDF report.)
 
 Regards,
 Concerned Citizen
 `;
 
   const subject = "User-Reported Aadhaar Scam (Awareness Submission)";
+  const to = "aswinhub26@gmail.com";
 
-  const mailto = `mailto:aswinhub26@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  window.location.href = mailto;
+  const gmailURL =
+    "https://mail.google.com/mail/?view=cm&fs=1" +
+    "&to=" + encodeURIComponent(to) +
+    "&su=" + encodeURIComponent(subject) +
+    "&body=" + encodeURIComponent(body);
+
+  window.open(gmailURL, "_blank");
 }
