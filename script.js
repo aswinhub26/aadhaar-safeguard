@@ -287,7 +287,7 @@ Concerned Citizen
 `;
 
   const subject = "User-Reported Aadhaar Scam (Awareness Submission)";
-  const to = "aadhaarsafeguard@gmail.com"; // 🔁 change if needed
+  const to = "aswinhub26@gmail.com"; 
 
   const gmailComposeURL =
     "https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1" +
