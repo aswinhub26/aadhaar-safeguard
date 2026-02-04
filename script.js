@@ -246,8 +246,7 @@ function emailIssueAdvanced(){
   ).map(li => "- " + li.innerText).join("\n");
 
   // ⏱️ Time snapshot
-  const now = new Date();
-  const timeSnapshot = now.toLocaleString();
+  const timeSnapshot = new Date().toLocaleString();
 
   // 📱 Device snapshot
   const deviceInfo = `
@@ -287,13 +286,23 @@ Concerned Citizen
 `;
 
   const subject = "User-Reported Aadhaar Scam (Awareness Submission)";
-  const to = "aswinhub26@gmail.com"; 
+  const to = "aswinhub26@gmail.com";
 
-  const gmailComposeURL =
-    "https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1" +
-    "&to=" + encodeURIComponent(to) +
-    "&su=" + encodeURIComponent(subject) +
-    "&body=" + encodeURIComponent(body);
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-  window.open(gmailComposeURL, "_blank");
+  if (isMobile) {
+    /* 📱 MOBILE → open Gmail app / mail app (works reliably) */
+    const mailto =
+      `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+  } else {
+    /* 🖥 DESKTOP → open Gmail WEB compose with content */
+    const gmailComposeURL =
+      "https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1" +
+      "&to=" + encodeURIComponent(to) +
+      "&su=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(body);
+
+    window.open(gmailComposeURL, "_blank");
+  }
 }
