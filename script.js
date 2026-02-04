@@ -245,8 +245,16 @@ function emailIssueAdvanced(){
     document.querySelectorAll("#riskReasons li")
   ).map(li => "- " + li.innerText).join("\n");
 
-  const timestamp = new Date().toLocaleString();
-  const userAgent = navigator.userAgent;
+  // ⏱️ Time snapshot
+  const now = new Date();
+  const timeSnapshot = now.toLocaleString();
+
+  // 📱 Device snapshot
+  const deviceInfo = `
+Browser : ${navigator.appName}
+Platform: ${navigator.platform}
+UserAgent: ${navigator.userAgent}
+`;
 
   const body = `
 Hello Aadhaar SafeGuard Team,
@@ -263,27 +271,29 @@ Indicators:
 ${reasons}
 
 ==============================
-ADDITIONAL INFO
+TIME & DEVICE SNAPSHOT
 ==============================
-Reported On : ${timestamp}
-Device Info : ${userAgent}
+Reported On:
+${timeSnapshot}
 
-⚠️ Note:
-This email is sent manually by the user using Gmail Web.
-No Aadhaar SafeGuard system has stored or transmitted my data.
+Device Information:
+${deviceInfo}
+
+⚠️ This email is user-initiated.
+No Aadhaar SafeGuard system has stored or tracked any data.
 
 Regards,
 Concerned Citizen
 `;
 
   const subject = "User-Reported Aadhaar Scam (Awareness Submission)";
-  const to = "aswinhub26@gmail.com";
+  const to = "aadhaarsafeguard@gmail.com"; // 🔁 change if needed
 
-  const gmailURL =
-    "https://mail.google.com/mail/?view=cm&fs=1" +
+  const gmailComposeURL =
+    "https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1" +
     "&to=" + encodeURIComponent(to) +
     "&su=" + encodeURIComponent(subject) +
     "&body=" + encodeURIComponent(body);
 
-  window.open(gmailURL, "_blank");
+  window.open(gmailComposeURL, "_blank");
 }
