@@ -151,20 +151,32 @@ body{
 }
 
 /* ================= ACTION BUTTON ================= */
+/* ===== ACTION BUTTON (UPDATED) ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap');
+
 .action-btn{
-  padding:16px 38px;          /* slightly bigger button */
+  padding:16px 40px;
   border-radius:40px;
   border:none;
   cursor:pointer;
+
   background:linear-gradient(135deg,#00e5ff,#2979ff);
   color:#000;
 
-  font-size:17px;             /* 🔥 bigger text */
-  font-weight:700;            /* 🔥 bold text */
-  letter-spacing:0.4px;       /* 🔥 clearer letters */
+  font-family:'Poppins', sans-serif;  /* 🔥 different font */
+  font-size:18px;                     /* 🔥 bigger text */
+  font-weight:800;                    /* 🔥 extra bold */
+  letter-spacing:0.6px;
 
-  transition:.3s;
+  box-shadow:0 10px 35px rgba(0,229,255,.55);
+  transition:.3s ease;
 }
+
+.action-btn:hover{
+  transform:scale(1.12);
+  box-shadow:0 0 55px rgba(0,229,255,.9);
+}
+
 
 
 .pulse{
