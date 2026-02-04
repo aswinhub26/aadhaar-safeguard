@@ -152,14 +152,20 @@ body{
 
 /* ================= ACTION BUTTON ================= */
 .action-btn{
-  padding:14px 34px;
+  padding:16px 38px;          /* slightly bigger button */
   border-radius:40px;
   border:none;
   cursor:pointer;
   background:linear-gradient(135deg,#00e5ff,#2979ff);
   color:#000;
-  font-size:15px;
+
+  font-size:17px;             /* 🔥 bigger text */
+  font-weight:700;            /* 🔥 bold text */
+  letter-spacing:0.4px;       /* 🔥 clearer letters */
+
+  transition:.3s;
 }
+
 
 .pulse{
   animation:pulse 2s infinite;
